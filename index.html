@@ -54,14 +54,14 @@
   .statusbar .dots .bat{width:22px;height:11px;border:1.5px solid var(--ink);border-radius:3px;opacity:.85;position:relative;}
   .statusbar .dots .bat::after{content:"";position:absolute;left:1.5px;top:1.5px;bottom:1.5px;width:70%;background:var(--ink);border-radius:1px;}
 
-  /* 진행 인디케이터 */
-  .progress{height:3px;background:var(--line);margin:22px 24px 0;border-radius:99px;overflow:hidden;}
+  /* 진행 인디케이터 (요청에 따라 전체 화면에서 숨김 처리) */
+  .progress{display:none;}
   .progress > i{display:block;height:100%;width:33%;background:var(--blue);border-radius:99px;
     transition:width .45s cubic-bezier(.22,1,.36,1);}
 
   /* 스크린 스택 */
-  .viewport{position:absolute;inset:0;top:34px;overflow:hidden;}
-  .screen{position:absolute;inset:0;display:flex;flex-direction:column;padding:48px 24px 30px;
+  .viewport{position:absolute;inset:0;overflow:hidden;}
+  .screen{position:absolute;inset:0;display:flex;flex-direction:column;padding:40px 24px 16px;
     opacity:0;transform:translateX(24px);pointer-events:none;
     transition:opacity .32s ease,transform .38s cubic-bezier(.22,1,.36,1);overflow-y:auto;}
   .screen.active{opacity:1;transform:translateX(0);pointer-events:auto;}
@@ -156,6 +156,10 @@
 
   /* ===== 공통 확장 ===== */
   .screen.pad-sm{padding-top:28px;}
+  #s-diagnosis{padding-top:40px;}
+  #s-dashboard{padding-top:36px;}
+  #s-result{padding-top:20px;}
+  #s-family .back,#s-programs .back{top:24px;}
   .screen.sticky-foot{overflow:hidden;}
   .screen.sticky-foot .sticky-body{flex:1 1 auto;min-height:0;overflow-y:auto;margin:0 -4px;padding:0 4px;}
   .screen.sticky-foot .footer{flex:none;}
@@ -175,7 +179,7 @@
   .q-bar{height:6px;background:var(--line);border-radius:99px;overflow:hidden;margin:14px 0 0;}
   .q-bar>i{display:block;height:100%;background:var(--blue);border-radius:99px;width:6%;transition:width .35s cubic-bezier(.22,1,.36,1);}
   .diag-sub{font-size:14px;color:var(--ink-sub);font-weight:400;margin:14px 0 0;line-height:1.5;}
-  .q-title{font-size:20px;font-weight:600;line-height:1.4;margin:26px 0 0;letter-spacing:-0.02em;word-break:keep-all;}
+  .q-title{font-size:20px;font-weight:600;line-height:1.4;margin:14px 0 0;letter-spacing:-0.02em;word-break:keep-all;}
   .q-options{margin-top:20px;}
   .q-hint{font-size:13px;color:var(--blue);font-weight:500;margin-bottom:12px;}
   .opt{display:flex;align-items:center;gap:13px;width:100%;padding:17px 18px;border:2px solid var(--line);
@@ -255,7 +259,7 @@
   .dash-gauge-row b{font-weight:600;}
   .dash-gauge{height:8px;background:rgba(255,255,255,.25);border-radius:99px;margin-top:10px;overflow:hidden;}
   .dash-gauge>i{display:block;height:100%;background:#fff;border-radius:99px;}
-  .dash-section-head{display:flex;justify-content:space-between;align-items:baseline;margin:26px 2px 14px;font-size:17px;font-weight:600;}
+  .dash-section-head{display:flex;justify-content:space-between;align-items:baseline;margin:48px 2px 14px;font-size:17px;font-weight:600;}
   .dash-section-head span{font-size:12.5px;color:var(--ink-sub);font-weight:400;}
   .task-card{border:1.5px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow-card);}
   .task-top{display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;}
@@ -617,7 +621,6 @@
             <button class="prog-chip" data-c="집단상담">집단상담</button>
             <button class="prog-chip" data-c="센터프로그램">센터프로그램</button>
           </div>
-          <div class="prog-count">1,029개 프로그램 · 상위 80개 표시 (검색·필터로 좁혀보세요)</div>
         </div>
         <div class="scroll-list">
           <div class="prog-list" id="prog-list"></div>
